@@ -2,11 +2,10 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -15,9 +14,10 @@ import java.util.UUID;
 @Setter
 public class Driver {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer driverId;
 
+    @Generated(value = GenerationTime.INSERT)
     private UUID driverUuid;
 
     private String driverName;

@@ -2,11 +2,10 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.awt.*;
 import java.util.UUID;
 
@@ -16,9 +15,10 @@ import java.util.UUID;
 @Setter
 public class Customer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer customerId;
 
+    @Generated(value = GenerationTime.INSERT)
     private UUID customerUuid;
 
     private String customerName;

@@ -2,6 +2,8 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -12,14 +14,14 @@ import java.util.UUID;
 @Setter
 public class Order {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderId;
 
+    @Generated(value = GenerationTime.INSERT)
     private UUID orderUuid;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_customer_id", referencedColumnName = "customerId")
-    private Customer customer;
+    @Column(name = "fk_customer_id") // Map to the foreign key column
+    private Integer customerId;
 
     @ManyToOne
     @JoinColumn(name = "fk_driver_id", referencedColumnName = "driverId")
