@@ -2,6 +2,7 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
@@ -20,12 +21,11 @@ public class Order {
     @Generated(value = GenerationTime.INSERT)
     private UUID orderUuid;
 
-    @Column(name = "fk_customer_id") // Map to the foreign key column
-    private Integer customerId;
+    @Column(name = "fk_customer_id")
+    private Integer fkCustomerId;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_driver_id", referencedColumnName = "driverId")
-    private Driver driver;
+    @JoinColumn(name = "fk_driver_id")
+    private Integer fkDriverId;
 
     private String orderType;
 
@@ -34,4 +34,5 @@ public class Order {
     private String orderStatus;
 
     private Integer orderProgress;
+
 }

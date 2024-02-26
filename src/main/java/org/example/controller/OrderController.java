@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.dto.OrderListDto;
 import org.example.model.Order;
 import org.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class OrderController {
     }
 
     @GetMapping("/get-all")
-    public List<Order> getAllOrders() {
+    public List<OrderListDto> getAllOrders() {
         return orderService.getAllOrders();
     }
 }

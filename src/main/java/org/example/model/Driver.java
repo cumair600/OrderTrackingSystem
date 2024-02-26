@@ -23,4 +23,5 @@ public class Driver {
     private String driverName;
 
     private String driverStatus;
+
 }
